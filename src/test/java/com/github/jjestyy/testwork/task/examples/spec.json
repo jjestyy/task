@@ -1,0 +1,158 @@
+{
+  "entity": {
+    "meta": {
+      "entity_id": null,
+      "uid": "test_bezop_soxr_uid",
+      "schema_version": "v2020-06-01",
+      "schema_type": "test_bezop_soxr",
+      "external_allowed": true
+    },
+    "versioning": {
+      "version": "",
+      "date_changed": "2020-06-01"
+    },
+    "behaviour": {
+      "state": [
+        {
+          "state_id": "chernovik",
+          "name": "Черновик"
+        }
+      ],
+      "transition": [
+        {
+          "transition_id": "sozdatq",
+          "name": "Создать",
+          "to": "chernovik"
+        }
+      ]
+    },
+    "data": {
+      "data_id": "data",
+      "integrity_fixed": false,
+      "section": [
+        {
+          "section_id": "sources",
+          "section_type": "hidden",
+          "list": [
+            {
+              "list_id": "sluzhenbyhe_polya",
+              "type": "various",
+              "group": [
+                {
+                  "group_id": "sluzhenbyhe_polya",
+                  "item": [
+                    {
+                      "item_id": "opisaniye_vzaimodejstviya",
+                      "type": "text",
+                      "text_rows_num": 4,
+                      "label": "Описание взамодействия",
+                      "value": "-",
+                      "default": {
+                        "value": "-",
+                        "readonly": true
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "section_id": "s1",
+          "name": "Запрос",
+          "list": [
+            {
+              "list_id": "l1",
+              "type": "various",
+              "group": [
+                {
+                  "group_id": "header",
+                  "show_as": "card",
+                  "item": [
+                    {
+                      "item_id": "state",
+                      "label": "Текущий статус",
+                      "type": "state",
+                      "display_name": "Черновик",
+                      "id": "chernovik",
+                      "overlay": true,
+                      "server_side": true
+                    },
+                    {
+                      "item_id": "target_transition",
+                      "label": "Ожидаемый переход статусов",
+                      "type": "target-transition",
+                      "value": null,
+                      "default": {
+                        "hidden": false,
+                        "readonly": true
+                      }
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "list_id": "l2",
+              "type": "various",
+              "group": [
+                {
+                  "group_id": "g1",
+                  "item": [
+                    {
+                      "item_id": "item_1",
+                      "label": "Поле 1",
+                      "type": "edit",
+                      "area": "1000 0000 0000 0000 0000 0000 0000 0000",
+                      "default": {
+                        "value": "1",
+                        "readonly": false
+                      }
+                    },
+                    {
+                      "item_id": "item_2",
+                      "label": "Поле 2",
+                      "type": "edit",
+                      "area": "0100 0000 0000 0000 0000 0000 0000 0000",
+                      "default": {
+                        "value": "2",
+                        "readonly": false
+                      }
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "list_id": "list_1",
+              "type": "similar",
+              "label": "3.Назначить уполномоченными на проведение проверки:",
+              "area": "1100 0000 0000 0000 0000 0000 0000 0000",
+              "group": [
+                {
+                  "group_id": "list",
+                  "show_as": "card",
+                  "item": [
+                    {
+                      "item_id": "list_item_1",
+                      "label": "поле таблицы 1",
+                      "type": "edit",
+                      "value": "1"
+                    },
+                    {
+                      "item_id": "list_item_2",
+                      "label": "поле таблицы 2",
+                      "type": "edit",
+                      "value": "2"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  }
+}
