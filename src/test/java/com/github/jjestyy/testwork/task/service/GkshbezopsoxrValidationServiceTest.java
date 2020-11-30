@@ -12,13 +12,12 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.*;
 @ExtendWith(SpringExtension.class)
 @SpringBootTest
 class GkshbezopsoxrValidationServiceTest {
     
     @Autowired
-    private GkshbezopsoxrValidationService service;
+    private SomeValidationService service;
 
     @Test
     void getValidatedGkshbezopsoxrJSON() throws JSONException {

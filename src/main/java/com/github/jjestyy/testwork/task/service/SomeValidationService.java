@@ -12,7 +12,7 @@ import java.util.Map;
 
 @Service
 @RequiredArgsConstructor
-public class GkshbezopsoxrValidationService {
+public class SomeValidationService {
 
     @Autowired
     private SpecRulesService specRulesService;
