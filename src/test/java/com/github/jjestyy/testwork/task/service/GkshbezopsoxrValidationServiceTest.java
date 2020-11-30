@@ -29,14 +29,11 @@ class GkshbezopsoxrValidationServiceTest {
 //       "1000 0000 0000 0000 0000 0000 0000 0000"
         JSONAssert.assertEquals(service.GetValidatedGkshbezopsoxrJSON(TestData.getSpec(), TestData.getOldJSON(), TestData.getNewJSON(), marks.get(1)),
                 TestData.getRes1JSON(), JSONCompareMode.LENIENT);
-        //       "1111 1111 1111 1111 1111 1111 1111 1111"
-        JSONAssert.assertEquals(service.GetValidatedGkshbezopsoxrJSON(TestData.getSpec(), TestData.getOldJSON(), TestData.getNewJSON(), marks.get(0)),
-                TestData.getNewJSON(), JSONCompareMode.LENIENT);
 //       "0100 0000 0000 0000 0000 0000 0000 0000"
-        JSONAssert.assertEquals(service.GetValidatedGkshbezopsoxrJSON(TestData.getSpec(), TestData.getOldJSON(), TestData.getNewJSON(), marks.get(0)),
+        JSONAssert.assertEquals(service.GetValidatedGkshbezopsoxrJSON(TestData.getSpec(), TestData.getOldJSON(), TestData.getNewJSON(), marks.get(2)),
                 TestData.getRes2JSON(), JSONCompareMode.LENIENT);
-
-
-
+//       "1111 1111 1111 1111 1111 1111 1111 1111"
+        JSONAssert.assertEquals(service.GetValidatedGkshbezopsoxrJSON(TestData.getSpec(), TestData.getOldJSON(), TestData.getNewJSON(), marks.get(3)),
+                TestData.getNewJSON(), JSONCompareMode.LENIENT);
     }
 }
