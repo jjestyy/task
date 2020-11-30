@@ -43,6 +43,7 @@
                   "item": [
                     {
                       "item_id": "opisaniye_vzaimodejstviya",
+                      "area": "0000 0000 0000 0000 0000 0000 0000 0000",
                       "type": "text",
                       "text_rows_num": 4,
                       "label": "Описание взамодействия",
