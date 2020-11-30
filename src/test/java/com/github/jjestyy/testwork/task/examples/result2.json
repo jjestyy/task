@@ -1,0 +1,41 @@
+{
+  "meta": {
+    "uuid": "f7d25716-57dc-4318-9d01-f43b112d7f50",
+    "form_type": "test_bezop_soxr"
+  },
+  "data": {
+    "opisaniye_vzaimodejstviya": {
+      "value": "-",
+      "readonly": true
+    },
+    "state": {
+      "id": "chernovik",
+      "display_name": "Черновик"
+    },
+    "target_transition": {
+      "value": null,
+      "readonly": true,
+      "hidden": false,
+      "value_list": []
+    },
+    "item_1": {
+      "value": "1",
+      "readonly": false
+    },
+    "item_2": {
+      "value": "200",
+      "readonly": false
+    },
+    "list_1": [
+      {
+        "list_item_1": {
+          "value": "11"
+        },
+        "list_item_2": {
+          "value": "22"
+        }
+      }
+    ]
+  },
+  "element_behaviour": null
+}
