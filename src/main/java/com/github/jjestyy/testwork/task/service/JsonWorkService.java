@@ -47,15 +47,15 @@ public class JsonWorkService {
     }
 
 
-    public List<JSONObject> findJsonObject(String index, JSONObject data) throws JSONException {
+    public List<Object> findJsonObjects(String index, JSONObject data) throws JSONException {
         Iterator<String> keys = data.keys();
-        List<JSONObject> result = new ArrayList<>();;
+        List<Object> result = new ArrayList<>();;
         while(keys.hasNext()) {
             String key = keys.next();
             if(key.equals(index)) {
-                result.add((JSONObject) data.get(key));
+                result.add( data.get(key));
             } else {
-                List<JSONObject> resultInner = getInnerJsonObject(index, data.get(key));
+                List<Object> resultInner = getInnerJsonObject(index, data.get(key));
                 if(resultInner.size() > 0) {
                     result.addAll(resultInner);
                 }
@@ -64,10 +64,10 @@ public class JsonWorkService {
         return result;
     }
 
-    public List<JSONObject> findJsonObjectInJsonArray(String index, JSONArray array) throws JSONException {
-        List<JSONObject> result = new ArrayList<>();
+    public List<Object> findJsonObjectInJsonArray(String index, JSONArray array) throws JSONException {
+        List<Object> result = new ArrayList<>();
         for (int i = 0; i < array.length(); i++) {
-            List<JSONObject> resultInner = getInnerJsonObject(index, array.get(i));
+            List<Object> resultInner = getInnerJsonObject(index, array.get(i));
             if(resultInner.size() > 0) {
                 result.addAll(resultInner);
             }
@@ -75,9 +75,9 @@ public class JsonWorkService {
         return result;
     }
 
-    private List<JSONObject> getInnerJsonObject(String index, Object current) throws JSONException {
+    private List<Object> getInnerJsonObject(String index, Object current) throws JSONException {
         if (current instanceof JSONObject) {
-            return findJsonObject(index, (JSONObject) current);
+            return findJsonObjects(index, (JSONObject) current);
         }
         if (current instanceof JSONArray) {
             return findJsonObjectInJsonArray(index, (JSONArray) current);

@@ -1,13 +1,11 @@
 package com.github.jjestyy.testwork.task.service;
 
 import lombok.RequiredArgsConstructor;
-import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.Iterator;
 import java.util.Map;
 
 @Service
@@ -33,7 +31,7 @@ public class SomeValidationService {
             resultJson.remove(dataId);
             for (Map.Entry<String, String> set : rules.entrySet()) {
                 if (!checkRules(set.getValue(), mark)) {
-                    jsonWorkService.replaceJsonObject(set.getKey(), resultData, jsonWorkService.findJsonObject(set.getKey(), oldData).get(0));
+                    jsonWorkService.replaceJsonObject(set.getKey(), resultData, (JSONObject) jsonWorkService.findJsonObjects(set.getKey(), oldData).get(0));
                 }
             }
             resultJson.put(dataId, resultData);
