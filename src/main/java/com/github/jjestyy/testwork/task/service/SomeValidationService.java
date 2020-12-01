@@ -14,8 +14,12 @@ import java.util.Map;
 @RequiredArgsConstructor
 public class SomeValidationService {
 
+
     @Autowired
     private SpecRulesService specRulesService;
+
+    @Autowired
+    private JsonWorkService jsonWorkService;
 
     public String GetValidatedGkshbezopsoxrJSON(String spec, String oldForm, String newForm, String mark)  {
         Map<String,String> rules = specRulesService.getRulesList(spec);
@@ -27,10 +31,9 @@ public class SomeValidationService {
             JSONObject oldData = (JSONObject) oldJson.get(dataId);
             JSONObject resultData = (JSONObject) newJson.get(dataId);
             resultJson.remove(dataId);
-
             for (Map.Entry<String, String> set : rules.entrySet()) {
                 if (!checkRules(set.getValue(), mark)) {
-                    replaceJsonObject(set.getKey(), resultData, findJsonObject(set.getKey(), oldData));
+                    jsonWorkService.replaceJsonObject(set.getKey(), resultData, jsonWorkService.findJsonObject(set.getKey(), oldData).get(0));
                 }
             }
             resultJson.put(dataId, resultData);
@@ -38,54 +41,6 @@ public class SomeValidationService {
         } catch (JSONException e) {
             throw new RuntimeException("Bad forms format, JSON parsing error");
         }
-    }
-
-    private void replaceJsonObject(String index, JSONObject data, JSONObject objectToPut) throws JSONException {
-        if(objectToPut != null) {
-            Iterator<String> keys = data.keys();
-            while (keys.hasNext()) {
-                String key = keys.next();
-                if (key.equals(index)) {
-                    keys.remove();
-                    data.remove(key);
-                    data.put(key, objectToPut);
-                    return;
-                }
-                if (data.get(key) instanceof JSONObject) {
-                    replaceJsonObject(index, (JSONObject) data.get(key), objectToPut);
-                }
-
-                if (data.get(key) instanceof JSONArray) {
-                    JSONArray array = (JSONArray) data.get(key);
-                    for(int i = 0; i < array.length(); i++) {
-                        replaceJsonObject(index, (JSONObject) array.get(i), objectToPut);
-                    }
-                }
-            }
-        }
-    }
-
-    private JSONObject findJsonObject(String index, JSONObject data) throws JSONException {
-        Iterator<String> keys = data.keys();
-        JSONObject finded = null;
-        while(keys.hasNext() && finded == null) {
-            String key = keys.next();
-            if(key.equals(index)) {
-                finded = (JSONObject) data.get(key);
-                break;
-            } else {
-                if (data.get(key) instanceof JSONObject) {
-                    finded = findJsonObject(index, (JSONObject) data.get(key));
-                }
-                if (data.get(key) instanceof JSONArray) {
-                    JSONArray array = (JSONArray) data.get(key);
-                    for (int i = 0; i < array.length(); i++) {
-                        finded = findJsonObject(index, (JSONObject) array.get(i));
-                    }
-                }
-            }
-        }
-        return finded;
     }
 
     private boolean checkRules(String value, String mark) {
